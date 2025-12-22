@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DXTREME Fitness - Login</title>
-
-  
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -16,14 +14,8 @@
 
     <!-- Left Image -->
     <div class="relative hidden md:flex w-1/2 h-full">
-      <img
-        src="../../Import/logo-gym.png"
-        class="w-full h-full object-cover"
-        alt="Fitness"
-      >
-       <!-- Dark overlay -->
- <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-black/10"></div>
-
+      <img src="../../Import/logo-gym.png" class="w-full h-full object-cover" alt="Fitness">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-black/10"></div>
     </div>
 
     <!-- Right Form -->
@@ -32,34 +24,52 @@
       <p class="text-gray-400 text-center mb-8">Sign in your account</p>
 
       <form class="space-y-5">
+
+        <!-- Username -->
         <div>
           <label class="block text-sm mb-1">Username</label>
-          <input
-            type="text"
-            class="w-full px-4 py-3 rounded-lg bg-[#1D1616] border border-gray-700 focus:outline-none focus:border-red-600"
-          >
+          <input id="username" type="text" placeholder="Enter username"class="w-full px-4 py-3 rounded-lg bg-[#1D1616] border border-gray-700 focus:outline-none focus:border-red-600">
         </div>
 
-        <div>
-          <label class="block text-sm mb-1">Password</label>
-          <input
-            type="password"
-            class="w-full px-4 py-3 rounded-lg bg-[#1D1616] border border-gray-700 focus:outline-none focus:border-red-600"
-          >
+        <!-- Password -->
+        <div class="w-full max-w-sm mx-auto">
+          <label for="password" class="block text-sm mb-1 text-white">Password</label>
+          <div class="relative w-full">
+            <input id="password" type="password" placeholder="Enter password" class="w-full px-4 py-3 rounded-lg bg-[#1D1616] border border-gray-700 focus:outline-none focus:border-red-600 text-white">
+            
+            <!-- Eye Toggle Button -->
+            <button type="button" id="togglePasswordBtn" class="absolute right-3 top-1/2 -translate-y-1/2 text-white hover:text-red-600">
+              <!-- Eye Icon -->
+              <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+
+              <!-- Eye-Off Icon (hidden by default) -->
+              <svg id="eyeOffIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.964 9.964 0 012.223-3.391M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18"/>
+              </svg>
+            </button>
+          </div>
         </div>
 
-       <div class="flex justify-center">
-        <button
-        class="w-full bg-[#8E1616] hover:bg-[#D84040] py-3 rounded-lg font-semibold transition"
-          >
-           Login
-       </button>
-      </div>
+        <!-- Login Button -->
+        <div class="flex justify-center mt-4">
+          <button class="w-full bg-[#8E1616] hover:bg-[#D84040] py-3 rounded-lg font-semibold transition">Login</button>
+        </div>
+
+        <!-- Links -->
+        <div class="flex justify-between mt-4 text-sm">
+          <a href="#" class="text-gray-400 hover:text-red-500 transition">Forgot password?</a>
+          <a href="#" class="text-gray-400 hover:text-red-500 transition">Report a problem</a>
+        </div>
 
       </form>
     </div>
-
   </div>
 
+  <!-- Link external JS file -->
+<script src="../../scripts/passwordToggle.js"></script>
 </body>
 </html>
