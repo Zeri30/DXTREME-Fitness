@@ -11,7 +11,7 @@ if (file_exists($configPath)) {
     exit;
 }
 
-// Ensure $conn is available
+// CHECK IF CONNECTION IS SET
 if (!isset($conn) || !$conn) {
     error_log('Database connection not available (login-auth).');
     $_SESSION['login_error'] = 'Database connection error.';
@@ -35,13 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['Username'] = $row['Username'];
             $_SESSION['Role'] = $row['Role'];
 
-            // Redirect based on role using separate ifs
             if ($row['Role'] === 'Owner') {
                 header("Location: ../../Roles/owner-role/pages/owner-dashboard.html");
                 exit;
             }
             if ($row['Role'] === 'Employee') {
-                // Redirect to employee dashboard (relative to this php file)
                 header("Location: ../../Roles/employee-role/pages/employee-dashboard.html");
                 exit;
             }

@@ -20,7 +20,7 @@ if (toggleBtn && passwordInput) {
   });
 }
 
-// Form validation on submit (guarded)
+
 if (form) {
   form.addEventListener('submit', (e) => {
     const username = document.getElementById('username');
@@ -30,7 +30,6 @@ if (form) {
       e.preventDefault(); // Stop form submission
       alert("Please enter both username and password");
 
-      // Clear fields safely
       if (username) username.value = '';
       if (password) password.value = '';
     }
