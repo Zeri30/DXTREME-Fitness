@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,19 +27,27 @@
       <h2 class="text-4xl font-bold mb-2 text-center">DXTREME GYM</h2>
       <p class="text-gray-400 text-center mb-8">Sign in your account</p>
 
-      <form class="space-y-5">
-
+      <?php
+      if (isset($_SESSION['login_error'])) {
+          echo '<div class="bg-red-600 text-white px-4 py-2 rounded mb-4 text-center">'
+              . htmlspecialchars($_SESSION['login_error'], ENT_QUOTES, 'UTF-8') .
+              '</div>';
+          unset($_SESSION['login_error']);
+      }
+      ?>
+      
+      <form class="space-y-5" method="POST" action="../php/login-auth.php">
         <!-- Username -->
         <div>
-          <label class="block text-sm mb-1">Username</label>
-          <input id="username" type="text" placeholder="Enter username"class="w-full px-4 py-3 rounded-lg bg-[#1D1616] border border-gray-700 focus:outline-none focus:border-red-600">
+          <label for="username" class="block text-sm mb-1">Username</label>
+          <input id="username" name="username" type="text" placeholder="Enter username" class="w-full px-4 py-3 rounded-lg bg-[#1D1616] border border-gray-700 focus:outline-none focus:border-red-600">
         </div>
 
         <!-- Password -->
         <div class="w-full max-w-sm mx-auto">
           <label for="password" class="block text-sm mb-1 text-white">Password</label>
           <div class="relative w-full">
-            <input id="password" type="password" placeholder="Enter password" class="w-full px-4 py-3 rounded-lg bg-[#1D1616] border border-gray-700 focus:outline-none focus:border-red-600 text-white">
+            <input id="password" name="password" type="password" placeholder="Enter password" class="w-full px-4 py-3 rounded-lg bg-[#1D1616] border border-gray-700 focus:outline-none focus:border-red-600 text-white">
             
             <!-- Eye Toggle Button -->
             <button type="button" id="togglePasswordBtn" class="absolute right-3 top-1/2 -translate-y-1/2 text-white hover:text-red-600">
@@ -56,7 +68,7 @@
 
         <!-- Login Button -->
         <div class="flex justify-center mt-4">
-          <button class="w-full bg-[#8E1616] hover:bg-[#D84040] py-3 rounded-lg font-semibold transition">Login</button>
+          <button type="submit" class="w-full bg-[#8E1616] hover:bg-[#D84040] py-3 rounded-lg font-semibold transition">Login</button>
         </div>
 
         <!-- Links -->
@@ -69,7 +81,7 @@
     </div>
   </div>
 
-  <!-- Link external JS file -->
-<script src="../../scripts/passwordToggle.js"></script>
+<script src="../scripts/LoginHelpers.js"></script>
 </body>
 </html>
+

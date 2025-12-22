@@ -1,0 +1,19 @@
+CREATE TABLE Users (
+  UserID INT AUTO_INCREMENT PRIMARY KEY,
+  Username VARCHAR(50) NOT NULL UNIQUE,
+  PasswordHash VARCHAR(255) NOT NULL,
+  Role ENUM('Owner','Employee','Member') NOT NULL,
+  ProfileID INT NULL,
+  CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+  UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+    ON UPDATE CURRENT_TIMESTAMP
+);
+
+//pw == password
+INSERT INTO Users (Username, PasswordHash, Role, ProfileID)
+VALUES (
+  'owner',
+  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+  'Owner',
+  NULL
+);
