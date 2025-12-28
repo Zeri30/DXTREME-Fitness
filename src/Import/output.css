@@ -670,3 +670,25 @@
     }
   }
 }
+
+.front-page{
+    height: 554px;
+    width: 580px;
+    position: absolute;
+    margin-top:-70px;
+}
+
+.with-us{
+  color:#D84040;
+  font-size:110px;
+}
+
+.logo{
+ min-width: 80px;
+ min-height: 80px;
+}
+
+.dxtreme-name {
+  font-weight: bold; /* optional: make text bold */
+  font-size: 2rem; /* optional: adjust size */
+}
