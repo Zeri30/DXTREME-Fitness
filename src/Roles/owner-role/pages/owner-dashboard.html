@@ -3,9 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Owner Dashboard - DXTREME Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dxtreme-dark': '#1D1616',
+                        'dxtreme-red': '#8E1616',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <h1>OWNER</h1>
+<body class="bg-dxtreme-dark text-white min-h-screen flex">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="w-64 bg-black bg-opacity-50 backdrop-blur-md p-6 flex flex-col">
+        <!-- Logo -->
+        <div class="flex items-center gap-3 mb-10">
+            <img src="../../Import/logo-gym.png" alt="DXTREME Logo" class="h-10">
+            <h1 class="text-2xl font-extrabold text-dxtreme-red">DXTREME</h1>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1">
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-dxtreme-red text-white mb-2">
+                <!-- Dashboard Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Dashboard
+            </a>
+
+            <!-- Profiles Dropdown -->
+            <div>
+                <button onclick="toggleDropdown('profilesDropdown')" class="w-full flex items-center justify-between gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                    <div class="flex items-center gap-3">
+                        <!-- Profiles Icon-->
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 0 1 9.288 0M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path></svg>
+                        Profiles
+                    </div>
+                    <!-- Chevron Icon -->
+                    <svg id="profilesChevron" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <!-- Dropdown Menu -->
+                <div id="profilesDropdown" class="hidden pl-8 mt-2 space-y-1">
+                    <a href="#" class="block p-2 rounded text-sm text-gray-400 hover:text-white hover:bg-white hover:bg-opacity-10 transition-all">Members</a>
+                    <a href="#" class="block p-2 rounded text-sm text-gray-400 hover:text-white hover:bg-white hover:bg-opacity-10 transition-all">Employees</a>
+                </div>
+            </div>
+
+            <a href="owner-invoice.html" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all mt-2">
+                <!-- Invoice Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Invoice & Salary
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                <!-- Attendance Icon (Fixed) -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                Attendance
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                <!-- Payment Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                Payment Records
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                <!-- Revenue Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                Revenue
+            </a>
+        </nav>
+
+        <!-- Bottom Nav -->
+        <div class="border-t border-gray-700 pt-4">
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                 <!-- Account Icon -->
+                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                Account Info
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-red-500 hover:bg-red-500 hover:bg-opacity-20 hover:text-red-400 transition-all">
+                <!-- Logout Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                Log Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="flex-1 p-10 overflow-y-auto">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-4xl font-extrabold">Dashboard</h1>
+            <p class="text-gray-400">Welcome back, Owner. Here's what's happening today.</p>
+        </header>
+
+        <!-- Metrics Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            <!-- Revenue Today Card -->
+            <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl border-l-4 border-dxtreme-red">
+                <p class="text-gray-400 text-sm mb-2">Revenue (Today)</p>
+                <p class="text-3xl font-bold">₱ 3,450</p>
+                <p class="text-green-400 text-sm mt-2">+12.5% from yesterday</p>
+            </div>
+            <!-- Revenue This Month Card -->
+            <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl border-l-4 border-green-600">
+                <p class="text-gray-400 text-sm mb-2">Revenue (This Month)</p>
+                <p class="text-3xl font-bold">₱ 65,780</p>
+                <p class="text-green-400 text-sm mt-2">On track</p>
+            </div>
+            <!-- Active Members Card -->
+            <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl border-l-4 border-blue-600">
+                <p class="text-gray-400 text-sm mb-2">Active Members</p>
+                <p class="text-3xl font-bold">152</p>
+                <p class="text-gray-400 text-sm mt-2">+5 new this week</p>
+            </div>
+            <!-- Present Today Card -->
+            <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl border-l-4 border-yellow-600">
+                <p class="text-gray-400 text-sm mb-2">Present (Today)</p>
+                <p class="text-3xl font-bold">38</p>
+                <p class="text-gray-400 text-sm mt-2">As of 2:00 PM</p>
+            </div>
+        </section>
+
+        <!-- Recent Activity Log -->
+        <section class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold">Recent Activity</h2>
+                <a href="#" class="text-dxtreme-red hover:underline text-sm">View All</a>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-gray-400 border-b border-gray-700">
+                            <th class="pb-3 font-medium">User</th>
+                            <th class="pb-3 font-medium">Action</th>
+                            <th class="pb-3 font-medium">Module</th>
+                            <th class="pb-3 font-medium">Date & Time</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3">John Doe</td>
+                            <td class="py-3">Added new member</td>
+                            <td class="py-3">Members</td>
+                            <td class="py-3 text-gray-400">Oct 27, 2023 - 1:45 PM</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3">Jane Smith</td>
+                            <td class="py-3">Recorded payment</td>
+                            <td class="py-3">Payments</td>
+                            <td class="py-3 text-gray-400">Oct 27, 2023 - 1:30 PM</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3">Admin</td>
+                            <td class="py-3">Released salary</td>
+                            <td class="py-3">Salaries</td>
+                            <td class="py-3 text-gray-400">Oct 27, 2023 - 12:15 PM</td>
+                        </tr>
+                         <tr class="border-b border-gray-800">
+                            <td class="py-3">Mike Johnson</td>
+                            <td class="py-3">Checked in member</td>
+                            <td class="py-3">Attendance</td>
+                            <td class="py-3 text-gray-400">Oct 27, 2023 - 11:00 AM</td>
+                        </tr>
+                         <tr>
+                            <td class="py-3">Admin</td>
+                            <td class="py-3">Updated membership plan</td>
+                            <td class="py-3">Plans</td>
+                            <td class="py-3 text-gray-400">Oct 27, 2023 - 10:30 AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+<script src="../scripts/navbar.js"></script>
 </body>
 </html>

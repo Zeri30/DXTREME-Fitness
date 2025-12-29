@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice & Salary - DXTREME Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dxtreme-dark': '#1D1616',
+                        'dxtreme-red': '#8E1616',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/invoice-style.css">
+
+</head>
+<body class="bg-dxtreme-dark text-white min-h-screen flex">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="w-64 bg-black bg-opacity-50 backdrop-blur-md p-6 flex flex-col">
+        <!-- Logo -->
+        <div class="flex items-center gap-3 mb-10">
+            <img src="../../Import/logo-gym.png" alt="DXTREME Logo" class="h-10">
+            <h1 class="text-2xl font-extrabold text-dxtreme-red">DXTREME</h1>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1">
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all mb-2">
+                <!-- Dashboard Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Dashboard
+            </a>
+
+            <!-- Profiles Dropdown -->
+            <div>
+                <button onclick="toggleDropdown('profilesDropdown')" class="w-full flex items-center justify-between gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                    <div class="flex items-center gap-3">
+                        <!-- Profiles Icon -->
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 0 1 9.288 0M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path></svg>
+                        Profiles
+                    </div>
+                    <!-- Chevron Icon -->
+                    <svg id="profilesChevron" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <!-- Dropdown Menu -->
+                <div id="profilesDropdown" class="hidden pl-8 mt-2 space-y-1">
+                    <a href="#" class="block p-2 rounded text-sm text-gray-400 hover:text-white hover:bg-white hover:bg-opacity-10 transition-all">Members</a>
+                    <a href="#" class="block p-2 rounded text-sm text-gray-400 hover:text-white hover:bg-white hover:bg-opacity-10 transition-all">Employees</a>
+                </div>
+            </div>
+
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-dxtreme-red text-white mb-2">
+                <!-- Invoice Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Invoice & Salary
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                <!-- Attendance Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                Attendance
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                <!-- Payment Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                Payment Records
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                <!-- Revenue Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                Revenue
+            </a>
+        </nav>
+
+        <!-- Bottom Nav -->
+        <div class="border-t border-gray-700 pt-4">
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                 <!-- Account Icon -->
+                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                Account Info
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-red-500 hover:bg-red-500 hover:bg-opacity-20 hover:text-red-400 transition-all">
+                <!-- Logout Icon -->
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                Log Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="flex-1 p-10 overflow-y-auto">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-4xl font-extrabold">Invoice & Salary</h1>
+            <p class="text-gray-400">Manage employee salaries and payment records.</p>
+        </header>
+
+        <!-- Tabs -->
+        <div class="flex border-b border-gray-700 mb-8">
+            <button onclick="switchTab('management')" class="tab-button active px-6 py-3 font-medium rounded-t-lg transition-colors" id="management-tab">
+                Invoice Management
+            </button>
+            <button onclick="switchTab('history')" class="tab-button px-6 py-3 font-medium rounded-t-lg transition-colors" id="history-tab">
+                Invoice History
+            </button>
+        </div>
+
+        <!-- Invoice Management Tab -->
+        <div id="management-content" class="tab-content active">
+            <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-gray-400 border-b border-gray-700">
+                            <th class="pb-3 font-medium">Employee ID</th>
+                            <th class="pb-3 font-medium">Full Name</th>
+                            <th class="pb-3 font-medium">Position</th>
+                            <th class="pb-3 font-medium">Salary Amount</th>
+                            <th class="pb-3 font-medium">For Month</th>
+                            <th class="pb-3 font-medium">Status</th>
+                            <th class="pb-3 font-medium text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row border-b border-gray-800 cursor-pointer" ondblclick="showSalaryDetails('EMP001', 'John Doe')">
+                            <td class="py-3">EMP001</td>
+                            <td class="py-3">Walter White</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱15,000</td>
+                            <td class="py-3">October 2023</td>
+                            <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-yellow-900 text-yellow-300">Pending</span></td>
+                            <td class="py-3 text-center">
+                                <button onclick="releaseSalary('EMP001', 'John Doe', 'October 2023')" class="bg-dxtreme-red hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors">
+                                    Release
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 cursor-pointer" ondblclick="showSalaryDetails('EMP002', 'Jane Smith')">
+                            <td class="py-3">EMP002</td>
+                            <td class="py-3">Jesse Pinkman</td>
+                            <td class="py-3">Receptionist</td>
+                            <td class="py-3">₱12,000</td>
+                            <td class="py-3">October 2023</td>
+                            <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">Paid</span></td>
+                            <td class="py-3 text-center">
+                                <button disabled class="bg-gray-700 text-gray-500 px-3 py-1 rounded text-sm cursor-not-allowed">
+                                    Released
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 cursor-pointer" ondblclick="showSalaryDetails('EMP003', 'Mike Johnson')">
+                            <td class="py-3">EMP003</td>
+                            <td class="py-3">Mike McLuscky</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱15,000</td>
+                            <td class="py-3">October 2023</td>
+                            <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-yellow-900 text-yellow-300">Pending</span></td>
+                            <td class="py-3 text-center">
+                                <button onclick="releaseSalary('EMP003', 'Mike Johnson', 'October 2023')" class="bg-dxtreme-red hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors">
+                                    Release
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 cursor-pointer" ondblclick="showSalaryDetails('EMP004', 'Sarah Williams')">
+                            <td class="py-3">EMP004</td>
+                            <td class="py-3">Gustavo Fring</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱18,000</td>
+                            <td class="py-3">October 2023</td>
+                            <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">Paid</span></td>
+                            <td class="py-3 text-center">
+                                <button disabled class="bg-gray-700 text-gray-500 px-3 py-1 rounded text-sm cursor-not-allowed">
+                                    Released
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 cursor-pointer" ondblclick="showSalaryDetails('EMP004', 'Sarah Williams')">
+                            <td class="py-3">EMP004</td>
+                            <td class="py-3">Bunny Williams</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱18,000</td>
+                            <td class="py-3">October 2023</td>
+                            <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">Paid</span></td>
+                            <td class="py-3 text-center">
+                                <button disabled class="bg-gray-700 text-gray-500 px-3 py-1 rounded text-sm cursor-not-allowed">
+                                    Released
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 cursor-pointer" ondblclick="showSalaryDetails('EMP004', 'Sarah Williams')">
+                            <td class="py-3">EMP004</td>
+                            <td class="py-3">Jon Snow</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱18,000</td>
+                            <td class="py-3">October 2023</td>
+                            <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">Paid</span></td>
+                            <td class="py-3 text-center">
+                                <button disabled class="bg-gray-700 text-gray-500 px-3 py-1 rounded text-sm cursor-not-allowed">
+                                    Released
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 cursor-pointer" ondblclick="showSalaryDetails('EMP004', 'Sarah Williams')">
+                            <td class="py-3">EMP004</td>
+                            <td class="py-3">Jaime Lannister</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱18,000</td>
+                            <td class="py-3">October 2023</td>
+                            <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">Paid</span></td>
+                            <td class="py-3 text-center">
+                                <button disabled class="bg-gray-700 text-gray-500 px-3 py-1 rounded text-sm cursor-not-allowed">
+                                    Released
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Invoice History Tab -->
+        <div id="history-content" class="tab-content">
+            <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-gray-400 border-b border-gray-700">
+                            <th class="pb-3 font-medium">Employee ID</th>
+                            <th class="pb-3 font-medium">Full Name</th>
+                            <th class="pb-3 font-medium">Position</th>
+                            <th class="pb-3 font-medium">Salary Amount</th>
+                            <th class="pb-3 font-medium">For Month</th>
+                            <th class="pb-3 font-medium">Release Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row border-b border-gray-800">
+                            <td class="py-3">EMP002</td>
+                            <td class="py-3">Walter White</td>
+                            <td class="py-3">Receptionist</td>
+                            <td class="py-3">₱12,000</td>
+                            <td class="py-3">October 2023</td>
+                            <td class="py-3">October 31, 2023</td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800">
+                            <td class="py-3">EMP004</td>
+                            <td class="py-3">Jesse Pinkman</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱18,000</td>
+                            <td class="py-3">October 2023</td>
+                            <td class="py-3">October 31, 2023</td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800">
+                            <td class="py-3">EMP001</td>
+                            <td class="py-3">Mike McLuscky</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱15,000</td>
+                            <td class="py-3">September 2023</td>
+                            <td class="py-3">September 30, 2023</td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800">
+                            <td class="py-3">EMP002</td>
+                            <td class="py-3">Gustavo Fring</td>
+                            <td class="py-3">Receptionist</td>
+                            <td class="py-3">₱12,000</td>
+                            <td class="py-3">September 2023</td>
+                            <td class="py-3">September 30, 2023</td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800">
+                            <td class="py-3">EMP003</td>
+                            <td class="py-3">Bunny Williams</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱15,000</td>
+                            <td class="py-3">September 2023</td>
+                            <td class="py-3">September 30, 2023</td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800">
+                            <td class="py-3">EMP004</td>
+                            <td class="py-3">Jon Snow</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱18,000</td>
+                            <td class="py-3">September 2023</td>
+                            <td class="py-3">September 30, 2023</td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800">
+                            <td class="py-3">EMP005</td>
+                            <td class="py-3">Jaime Lannister</td>
+                            <td class="py-3">Trainer</td>
+                            <td class="py-3">₱18,000</td>
+                            <td class="py-3">September 2023</td>
+                            <td class="py-3">September 30, 2023</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Salary Details Modal -->
+    <div id="salaryModal" class="modal">
+        <div class="bg-dxtreme-dark rounded-xl p-6 w-full max-w-md">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold">Salary Details</h2>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="mb-4">
+                <p class="text-gray-400 mb-1">Employee</p>
+                <p class="text-xl font-semibold" id="modalEmployeeName">John Doe</p>
+                <p class="text-sm text-gray-400" id="modalEmployeeId">EMP001</p>
+            </div>
+            <div class="mb-4">
+                <p class="text-gray-400 mb-2">2023</p>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>January</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">PAID</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>February</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">PAID</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>March</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">PAID</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>April</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">PAID</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>May</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">PAID</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>June</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">PAID</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>July</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">PAID</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>August</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">PAID</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>September</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">PAID</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>October</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-yellow-900 text-yellow-300">UNPAID</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>November</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-gray-700 text-gray-400">UPCOMING</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 rounded bg-gray-800">
+                        <span>December</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-gray-700 text-gray-400">UPCOMING</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="../scripts/invoice-tab.js"></script>
+</body>
+</html>
