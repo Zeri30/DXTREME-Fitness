@@ -671,12 +671,6 @@
   }
 }
 
-.front-page{
-    height: 554px;
-    width: 580px;
-    position: absolute;
-    margin-top:-70px;
-}
 
 .with-us{
   color:#D84040;
@@ -689,6 +683,205 @@
 }
 
 .dxtreme-name {
-  font-weight: bold; /* optional: make text bold */
-  font-size: 2rem; /* optional: adjust size */
+  font-weight: bold; /* make text bold */
+  font-size: 2rem; /* adjust size */
 }
+
+/* Right-side logo */
+
+/* Desktop / default */
+.wrapper {
+  position: absolute;
+  right: 0;
+  left: 700px;                  /* horizontal placement */
+  top: 60%;                     /* center vertically */
+  transform: translateY(-50%);  /* center by element height */
+  height: 600px;                /* wrapper size */
+  width: 500px;
+  transform-style: preserve-3d;
+}
+
+.logo-gym {
+  height: 600px;                /* logo size */
+  width: 500px;
+  backface-visibility: visible;
+
+  /* Shadow for depth */
+  filter: drop-shadow(0 50px 70px rgba(0,0,0,0.45));
+
+  /* Shine effect */
+  position: relative;
+  z-index: 1;
+}
+
+/* Shine overlay */
+.logo-gym::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.35) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .wrapper {
+    height: 400px;
+    width: 300px;
+  }
+  .logo-gym {
+    height: 400px;
+    width: 300px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .wrapper {
+    height: 300px;
+    width: 200px;
+  }
+  .logo-gym {
+    height: 300px;
+    width: 200px;
+  }
+}
+
+/*Left-Side*/
+.left-corner{
+  padding-left:50px;
+}
+
+/*About-Us Section*/
+
+/* Floating Location Button */
+.location-btn {
+  position: absolute;
+  top: 500px;
+  right: 10px;
+  transform: none;   /* REMOVE centering */
+  z-index: 20;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  border: 2px solid white;
+}
+
+
+.location-btn:hover {
+  background-color: #b91c1c; /* red-700 */
+}
+
+header {
+  position: relative; /* already relative, good */
+  z-index: 10; /* make sure it's above the image */
+}
+.location {
+  position: relative; /* needed for overlay positioning */
+  margin-top: -100px; /* negative margin to pull the hero up behind the navbar */
+  z-index: 0; /* make sure overlay and image are below navbar */
+  inset: 0;
+}
+
+.location img {
+  height: 700px; /* fixed height */
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.4; /* semi-transparent */
+  display: block;
+}
+
+/* Dark overlay */
+.location::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* subtle black overlay */
+  pointer-events: none; /* allows clicking buttons above */
+}
+
+.hero-left-img {
+  position: absolute;
+  top: 100px;
+  left: 6%;
+  width: 420px;
+  z-index: 15;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.discover-btn {
+  position: absolute;
+  top: 500px;   /* BELOW location button */
+  right: 8%;
+  z-index: 20;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  border: 2px solid white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.discover-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.hero-right-content {
+  position: absolute;
+  top: 200px;
+  right: 8%;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  max-width: 380px;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1.2;
+}
+
+.hero-text {
+  font-size: 1rem;
+  color: #e5e5e5;
+  opacity: 0.9;
+}
+
+.location-btn,
+.discover-btn {
+  position: static;
+}
+
+
+
+
