@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue - DXTREME Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dxtreme-dark': '#1D1616',
+                        'dxtreme-red': '#8E1616',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/revenue-style.css">
+</head>
+<body class="bg-dxtreme-dark text-white">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="w-64 bg-black bg-opacity-50 backdrop-blur-md p-6 flex flex-col sidebar-fixed">
+        <!-- Logo -->
+        <div class="flex items-center gap-3 mb-10">
+            <img src="../../Import/logo-gym.png" alt="DXTREME Logo" class="h-10">
+            <h1 class="text-2xl font-extrabold text-dxtreme-red">DXTREME</h1>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1">
+            <a href="../pages/owner-dashboard.html" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all mb-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Dashboard
+            </a>
+
+            <!-- Profiles Dropdown -->
+            <div>
+                <button onclick="toggleDropdown('profilesDropdown')" class="w-full flex items-center justify-between gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 0 1 9.288 0M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path></svg>
+                        Profiles
+                    </div>
+                    <svg id="profilesChevron" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="profilesDropdown" class="hidden pl-8 mt-2 space-y-1">
+                    <a href="#" class="block p-2 rounded text-sm text-gray-400 hover:text-white hover:bg-white hover:bg-opacity-10 transition-all">Members</a>
+                    <a href="#" class="block p-2 rounded text-sm text-gray-400 hover:text-white hover:bg-white hover:bg-opacity-10 transition-all">Employees</a>
+                </div>
+            </div>
+
+            <a href="../pages/owner-invoice.html" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all mb-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Invoice & Salary
+            </a>
+            <a href="../pages/owner-attendance.html" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all mb-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                Attendance
+            </a>
+            <a href="../pages/owner-payments.html" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all mb-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                Payment Records
+            </a>
+            <a href="../pages/owner-revenue.html" class="flex items-center gap-3 p-3 rounded-lg bg-dxtreme-red text-white mb-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                Revenue
+            </a>
+        </nav>
+
+        <!-- Bottom Nav -->
+        <div class="border-t border-gray-700 pt-4">
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all">
+                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                Account Info
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-red-500 hover:bg-red-500 hover:bg-opacity-20 hover:text-red-400 transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                Log Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content-fixed p-10">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-4xl font-extrabold">Revenue</h1>
+            <p class="text-gray-400">Track and manage gym revenue and cash flow.</p>
+        </header>
+
+        <!-- Revenue Summary Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl border-l-4 border-dxtreme-red">
+                <p class="text-gray-400 text-sm mb-2">Total Revenue</p>
+                <p class="text-3xl font-bold">₱ 185,750</p>
+                <p class="text-gray-400 text-sm mt-2">This month</p>
+            </div>
+            <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl border-l-4 border-green-600">
+                <p class="text-gray-400 text-sm mb-2">Cash Revenue</p>
+                <p class="text-3xl font-bold">₱ 93,450</p>
+                <p class="text-gray-400 text-sm mt-2">50.3% of total</p>
+            </div>
+            <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl border-l-4 border-blue-600">
+                <p class="text-gray-400 text-sm mb-2">GCash Revenue</p>
+                <p class="text-3xl font-bold">₱ 92,300</p>
+                <p class="text-gray-400 text-sm mt-2">49.7% of total</p>
+            </div>
+            <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl border-l-4 border-yellow-600">
+                <p class="text-gray-400 text-sm mb-2">Pending Release</p>
+                <p class="text-3xl font-bold">₱ 42,300</p>
+                <p class="text-gray-400 text-sm mt-2">5 records</p>
+            </div>
+        </section>
+
+        <!-- Release Cash Form -->
+        <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl mb-6">
+            <h2 class="text-xl font-bold mb-4">Release Cash</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">Amount (₱)</label>
+                    <input type="number" id="releaseAmount" placeholder="0.00" class="w-full px-3 py-2 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-dxtreme-red text-white">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">Payment Method</label>
+                    <select id="releaseMethod" class="w-full px-3 py-2 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-dxtreme-red text-white">
+                        <option value="cash">Cash</option>
+                        <option value="gcash">GCash</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">Date</label>
+                    <input type="date" id="releaseDate" class="w-full px-3 py-2 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-dxtreme-red text-white">
+                </div>
+                <div class="flex items-end">
+                    <button onclick="confirmRelease()" class="bg-dxtreme-red hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors">
+                        Release Cash
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Revenue Chart -->
+        <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold">Revenue Trend</h2>
+                <div class="flex gap-2">
+                    <button class="px-3 py-1 bg-gray-700 text-white rounded text-sm">Week</button>
+                    <button class="px-3 py-1 bg-dxtreme-red text-white rounded text-sm">Month</button>
+                    <button class="px-3 py-1 bg-gray-700 text-white rounded text-sm">Year</button>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Revenue Records Table -->
+        <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl overflow-x-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold">Revenue Records</h2>
+                <div class="flex gap-2">
+                    <select class="px-3 py-1 bg-gray-800 rounded text-sm">
+                        <option>All Status</option>
+                        <option>Pending</option>
+                        <option>Released</option>
+                    </select>
+                    <button class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-1 rounded text-sm transition-colors">
+                        Export
+                    </button>
+                </div>
+            </div>
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="text-gray-400 border-b border-gray-700">
+                        <th class="pb-3 font-medium">Revenue ID</th>
+                        <th class="pb-3 font-medium">Date</th>
+                        <th class="pb-3 font-medium">Total Earned</th>
+                        <th class="pb-3 font-medium">Cash</th>
+                        <th class="pb-3 font-medium">GCash</th>
+                        <th class="pb-3 font-medium">Released By</th>
+                        <th class="pb-3 font-medium">Status</th>
+                        <th class="pb-3 font-medium text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="revenueTableBody">
+                    <tr class="table-row border-b border-gray-800">
+                        <td class="py-3">#REV001</td>
+                        <td class="py-3">Oct 27, 2023</td>
+                        <td class="py-3 font-semibold">₱ 12,450</td>
+                        <td class="py-3">₱ 6,200</td>
+                        <td class="py-3">₱ 6,250</td>
+                        <td class="py-3">John Doe</td>
+                        <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">Released</span></td>
+                        <td class="py-3 text-center">
+                            <button onclick="viewRevenueDetails('REV001')" class="text-dxtreme-red hover:text-red-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="table-row border-b border-gray-800">
+                        <td class="py-3">#REV002</td>
+                        <td class="py-3">Oct 26, 2023</td>
+                        <td class="py-3 font-semibold">₱ 10,300</td>
+                        <td class="py-3">₱ 5,100</td>
+                        <td class="py-3">₱ 5,200</td>
+                        <td class="py-3">Jane Smith</td>
+                        <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">Released</span></td>
+                        <td class="py-3 text-center">
+                            <button onclick="viewRevenueDetails('REV002')" class="text-dxtreme-red hover:text-red-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="table-row border-b border-gray-800">
+                        <td class="py-3">#REV003</td>
+                        <td class="py-3">Oct 25, 2023</td>
+                        <td class="py-3 font-semibold">₱ 15,700</td>
+                        <td class="py-3">₱ 8,300</td>
+                        <td class="py-3">₱ 7,400</td>
+                        <td class="py-3">-</td>
+                        <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-yellow-900 text-yellow-300">Pending</span></td>
+                        <td class="py-3 text-center">
+                            <button onclick="viewRevenueDetails('REV003')" class="text-dxtreme-red hover:text-red-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="table-row border-b border-gray-800">
+                        <td class="py-3">#REV004</td>
+                        <td class="py-3">Oct 24, 2023</td>
+                        <td class="py-3 font-semibold">₱ 9,850</td>
+                        <td class="py-3">₱ 4,500</td>
+                        <td class="py-3">₱ 5,350</td>
+                        <td class="py-3">John Doe</td>
+                        <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300">Released</span></td>
+                        <td class="py-3 text-center">
+                            <button onclick="viewRevenueDetails('REV004')" class="text-dxtreme-red hover:text-red-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="table-row border-b border-gray-800">
+                        <td class="py-3">#REV005</td>
+                        <td class="py-3">Oct 23, 2023</td>
+                        <td class="py-3 font-semibold">₱ 13,200</td>
+                        <td class="py-3">₱ 6,800</td>
+                        <td class="py-3">₱ 6,400</td>
+                        <td class="py-3">-</td>
+                        <td class="py-3"><span class="px-2 py-1 text-xs rounded-full bg-yellow-900 text-yellow-300">Pending</span></td>
+                        <td class="py-3 text-center">
+                            <button onclick="viewRevenueDetails('REV005')" class="text-dxtreme-red hover:text-red-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Release Cash Confirmation Modal -->
+    <div id="releaseModal" class="modal">
+        <div class="bg-dxtreme-dark rounded-xl p-6 w-full max-w-md">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold">Confirm Cash Release</h2>
+                <button onclick="closeReleaseModal()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <p class="text-gray-400 text-sm">Amount to Release</p>
+                    <p class="text-2xl font-bold text-dxtreme-red" id="confirmAmount">₱ 0.00</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-sm">Payment Method</p>
+                    <p class="font-semibold" id="confirmMethod">Cash</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-sm">Release Date</p>
+                    <p class="font-semibold" id="confirmDate">October 27, 2023</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-sm">Remaining Revenue</p>
+                    <p class="font-semibold" id="confirmRemaining">₱ 0.00</p>
+                </div>
+            </div>
+            <div class="flex justify-end gap-3 mt-6">
+                <button onclick="closeReleaseModal()" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                    Cancel
+                </button>
+                <button onclick="releaseCash()" class="px-4 py-2 bg-dxtreme-red hover:bg-red-600 text-white rounded-lg transition-colors">
+                    Confirm Release
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Revenue Details Modal -->
+    <div id="revenueDetailsModal" class="modal">
+        <div class="bg-dxtreme-dark rounded-xl p-6 w-full max-w-md">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold">Revenue Details</h2>
+                <button onclick="closeDetailsModal()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <p class="text-gray-400 text-sm">Revenue ID</p>
+                    <p class="font-semibold" id="detailsRevenueId">#REV001</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-sm">Date</p>
+                    <p class="font-semibold" id="detailsDate">October 27, 2023</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-sm">Total Earned</p>
+                    <p class="font-semibold text-xl text-dxtreme-red" id="detailsTotal">₱ 12,450</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-sm">Cash Revenue</p>
+                    <p class="font-semibold" id="detailsCash">₱ 6,200</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-sm">GCash Revenue</p>
+                    <p class="font-semibold" id="detailsGCash">₱ 6,250</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-sm">Released By</p>
+                    <p class="font-semibold" id="detailsReleasedBy">John Doe</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-sm">Status</p>
+                    <p><span class="px-2 py-1 text-xs rounded-full bg-green-900 text-green-300" id="detailsStatus">Released</span></p>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button onclick="closeDetailsModal()" class="px-4 py-2 bg-dxtreme-red hover:bg-red-600 text-white rounded-lg transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../scripts/revenue.js"></script>
+</body>
+</html>
